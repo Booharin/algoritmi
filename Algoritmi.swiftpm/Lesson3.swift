@@ -14,27 +14,29 @@ final class Lesson3: LessonProtocol {
 
         let size = 40
         var array1 = fillArray(length: size)
-        let array2 = fillArray(length: size)
-        //printArray(array: array1)
+        //let array2 = fillArray(length: size)
+        printArray(array: array1)
 
         //bubbleSort(array: &array1)
+        pickSort(array: &array1)
+
+        printArray(array: array1)
         //pickSort(array: &array1)
         
-        var array3 = [3, 4, 8, 10, 45, 73, 3, 4, 7, 93, 25, 61, 33, 0, 7]
-        printArray(array: array3)
-        pickSort(array: &array3)
-        printArray(array: array3)
-        print(binSearch(array: &array3, value: 25))
+//        var array3 = [3, 4, 8, 10, 45, 73, 3, 4, 7, 93, 25, 61, 33, 0, 7]
+//        printArray(array: array3)
+//        pickSort(array: &array3)
+//        printArray(array: array3)
+//        print(binSearch(array: &array3, value: 25))
     }
 
     func runHomeWork() {
-
+        let size = 40
+        var array4 = fillArray(length: size)
+        bubbleSortImproved(array: &array4)
+        printArray(array: array4)
     }
-}
 
-//MARK: - Home work
-
-extension Lesson3 {
     // linear search
     func linearSearch(array: [Int], value: Int) -> Int {
         var i = 0
@@ -60,30 +62,32 @@ extension Lesson3 {
     // bubble sort
 
     func bubbleSort(array: inout [Int]) {
-
-        for i in 0...array.count {
+        var operationsCount = 0
+        for _ in 0...array.count {
+            operationsCount += 1
             for j in 0...array.count - 1 {
-                if j < array.count - 1, array[j] > array[j + 1] {
+                operationsCount += 1
+                if j < array.count - 1,
+                    array[j] > array[j + 1] {
                     array.swapAt(j, j + 1)
                 }
             }
         }
 
-//        for i in (1..<array.count).reversed() {
-//            for j in 0..<i where array[j] > array[j + 1] {
-//                array.swapAt(j, j + 1)
-//            }
-//        }
+        print(operationsCount)
     }
 
     func pickSort(array: inout [Int]) {
+        var operationsCount = 0
         var j = 0
 
         for i in 0...array.count {
+            operationsCount += 1
             var jMin = i
             j = i
 
             for j in j...array.count {
+                operationsCount += 1
                 if  j < array.count,
                     jMin < array.count,
                     array[j] < array[jMin] {
@@ -96,6 +100,8 @@ extension Lesson3 {
                 array.swapAt(i, jMin)
             }
         }
+
+        print("Operations count: ", operationsCount)
     }
 
     //MARK: - Binaric search
@@ -117,6 +123,24 @@ extension Lesson3 {
         }
 
         return array[middle] == value ? middle : -1
+    }
+
+    func binSearchA(array: inout [Int], value: Int) -> Int {
+        var left = 0
+        var right = array.count
+        var middle = (right - left) / 2
+
+        while left <= middle, array[middle] != value {
+            if array[middle] > value {
+                right = middle - 1
+            } else {
+                left = middle + 1
+            }
+
+            middle = left + (right - left) / 2
+        }
+
+        return array[middle] == value ? value : -1
     }
 
     private func fillArray(length: Int) -> [Int] {
@@ -142,4 +166,37 @@ extension Lesson3 {
     }
 
     // у нас есть просто swap если что
+
 }
+
+//MARK: - Home work
+
+extension Lesson3 {
+    func bubbleSortImproved(array: inout [Int]) {
+        var operationsCount = 0
+
+        for i in (1..<array.count).reversed() {
+            operationsCount += 1
+
+            for j in 0..<i where array[j] > array[j + 1] {
+                operationsCount += 1
+                array.swapAt(j, j + 1)
+            }
+        }
+
+        print("Operations count: ", operationsCount)
+    }
+
+    // или через if
+
+//    func bubbleSortImprovedA(array: inout [Int]) {
+//        for i in (1..<array.count).reversed() {
+//            for j in 0..<i {
+//                if array[j] > array[j+1] {
+//                    array.swapAt(j, j + 1)
+//                }
+//            }
+//        }
+//    }
+}
+ 
