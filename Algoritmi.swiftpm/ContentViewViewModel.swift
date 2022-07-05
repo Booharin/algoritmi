@@ -24,8 +24,12 @@ final class ContentViewViewModel: ContentViewViewModelProtocol {
 //        lesson2.runAlgoritms()
 //        lesson2.runHomeWork()
 
-        let lesson3 = Lesson3()
-        lesson3.runAlgoritms()
-        lesson3.runHomeWork()
+//        let lesson3 = Lesson3()
+//        lesson3.runAlgoritms()
+//        lesson3.runHomeWork()
+
+        let lesson4 = Lesson4()
+        lesson4.runAlgoritms()
+        lesson4.runHomeWork()
     }
 }

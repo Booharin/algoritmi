@@ -12,15 +12,16 @@ final class Lesson3: LessonProtocol {
 //        print(linearSearch(array: [1, 2, 3, 4, 5], value: 4))
 //        print(bareerSearch(array: [1, 2, 3, 4, 5], value: 3))
 
-        let size = 40
-        var array1 = fillArray(length: size)
+       // let size = 40
+        //var array1 = fillArray(length: size)
         //let array2 = fillArray(length: size)
-        printArray(array: array1)
+       // printArray(array: array1)
 
         //bubbleSort(array: &array1)
-        pickSort(array: &array1)
+       // pickSort(array: &array1)
+        
 
-        printArray(array: array1)
+        //printArray(array: array1)
         //pickSort(array: &array1)
         
 //        var array3 = [3, 4, 8, 10, 45, 73, 3, 4, 7, 93, 25, 61, 33, 0, 7]
@@ -33,7 +34,9 @@ final class Lesson3: LessonProtocol {
     func runHomeWork() {
         let size = 40
         var array4 = fillArray(length: size)
-        bubbleSortImproved(array: &array4)
+        printArray(array: array4)
+        //bubbleSortImproved(array: &array4)
+        bubbleSortPlus(array: &array4)
         printArray(array: array4)
     }
 
@@ -187,6 +190,26 @@ extension Lesson3 {
         print("Operations count: ", operationsCount)
     }
 
+    func bubbleSortPlus(array: inout [Int]) {
+        var operationsCount = 0
+        
+        for i in (1..<array.count).reversed() {
+            operationsCount += 1
+
+            let j = i % 2 == 0 ? 0 : 1
+
+            for j in stride(from: j, to: array.count - 1, by: 2) {
+                operationsCount += 1
+
+                if array[j] > array[j+1] {
+                    array.swapAt(j, j + 1)
+                }
+            }
+        }
+
+        print("Operations count: ", operationsCount)
+    }
+
     // или через if
 
 //    func bubbleSortImprovedA(array: inout [Int]) {
@@ -198,5 +221,19 @@ extension Lesson3 {
 //            }
 //        }
 //    }
+
+    func shakeSort(array: inout [Int]) {
+        
+    }
+
+    func linearSearch(array: inout [Int], length: inout Int, value: Int) -> Int {
+        length -= 1
+
+        if length >= 0 {
+            return array[length] != value ? linearSearch(array: &array, length: &length, value: value) : length
+        } else {
+            return -1
+        }
+    }
 }
  
