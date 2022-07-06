@@ -23,6 +23,17 @@ final class Lesson4: LessonProtocol {
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0]
     ]
+
+    var boardWithLet = [
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 0, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1]
+    ]
     
     func runAlgoritms() {
 
@@ -158,6 +169,19 @@ final class Lesson4: LessonProtocol {
     }
 
     func runHomeWork() {
+        
+    }
+}
 
+//MARK: - Home work
+
+extension Lesson4 {
+    func findRoutesWithLet(r: Int, c: Int, array: [[Int]]) -> Int {
+        if r == 0 || c == 0 {
+            return 1
+        } else {
+            return array[r][c] == 1 ?
+            findRoutesWithLet(r: r - 1, c: c, array: array) + findRoutesWithLet(r: r, c: c - 1, array: array) : 0
+        }
     }
 }
