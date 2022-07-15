@@ -20,9 +20,9 @@ final class ContentViewViewModel: ContentViewViewModelProtocol {
 //        let lesson1 = Lesson1()
 //        lesson1.runAlgoritms()
 //        lesson1.runHomeWork()
-//        let lesson2 = Lesson2()
-//        lesson2.runAlgoritms()
-//        lesson2.runHomeWork()
+        let lesson2 = Lesson2()
+        lesson2.runAlgoritms()
+        lesson2.runHomeWork()
 
 //        let lesson3 = Lesson3()
 //        lesson3.runAlgoritms()
@@ -35,8 +35,11 @@ final class ContentViewViewModel: ContentViewViewModelProtocol {
 //        let lesson5 = Lesson5()
 //        lesson5.runAlgoritms()
 //        lesson5.runHomeWork()
-        let lesson6 = Lesson6()
-        lesson6.runAlgoritms()
-        lesson6.runHomeWork()
+//        let lesson6 = Lesson6()
+//        lesson6.runAlgoritms()
+//        lesson6.runHomeWork()
+//        let lesson7 = Lesson7()
+//        lesson7.runAlgoritms()
+//        lesson7.runHomeWork()
     }
 }

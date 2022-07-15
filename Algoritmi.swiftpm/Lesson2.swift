@@ -15,7 +15,7 @@ final class Lesson2: LessonProtocol {
 
         print("factorial: ", fc(number: 5))
 
-        print("factorial: ", f(n: 5))
+        print("factorial: ", f(n: 6))
 
         tower(size: 3)
     }
